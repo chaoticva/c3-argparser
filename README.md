@@ -1,3 +1,8 @@
+# Disclaimer
+
+### This is a minimal argument parser that is not intended to get expanded with more features.
+### for a more feature-packed version see https://github.com/joshring/argparse
+
 # Example
 
 ```cpp
