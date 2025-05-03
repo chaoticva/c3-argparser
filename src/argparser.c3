@@ -1,5 +1,27 @@
+/*
+  Copyright 2025 Kiana Bennett
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+  and associated documentation files (the “Software”), to deal in the Software without
+  restriction, including without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or
+  substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  OTHER DEALINGS IN THE SOFTWARE.
+*/
+
 module argparser;
 
+import color_util;
 import std::io;
 import std::os;
 
@@ -32,7 +54,7 @@ fn String ArgParser.get_arg(&self, String name)
         }
     }
 
-    io::eprintfn("Argument '%s' is not defined", name);
+    io::eprintfn("%sArgument '%s' is not defined%s", color_util::COLOR_RED, name, color_util::COLOR_RESET);
     os::exit(EXIT_FAILURE);
     return "";
 }
@@ -72,7 +94,7 @@ fn void ArgParser.parse(&self)
                 {
                     if (i + 1 >= self.args.len)
                     {
-                        io::eprintfn("Option '%s' requires an argument", arg);
+                        io::eprintfn("%sOption '%s' requires an argument%s", color_util::COLOR_RED, arg, color_util::COLOR_RESET);
                         os::exit(EXIT_FAILURE);
                     }
                     self.options[j].value = self.args[i + 1];
@@ -90,7 +112,7 @@ fn void ArgParser.parse(&self)
     {
         if (self.options[i].required && self.options[i].value == "")
         {
-            io::eprintfn("Option '--%s' is required", self.options[i].long_name);
+            io::eprintfn("%sOption '--%s' is required%s", color_util::COLOR_RED, self.options[i].long_name, color_util::COLOR_RESET);
             os::exit(EXIT_FAILURE);
         }
     }

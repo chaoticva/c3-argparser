@@ -5,7 +5,7 @@
   "dependencies": [ ],
   "authors": [ "Kiana Bennett" ],
   "version": "0.1.0",
-  "sources": [ "src/**" ],
+  "sources": [ "src/**", "lib/**" ],
   "test-sources": [ "test/**" ],
   "output": "build",
   "targets": {

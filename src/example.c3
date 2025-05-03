@@ -38,7 +38,7 @@ fn int main(String[] args)
     return 0;
 }
 
-fn void handle_install(Sting package_name)
+fn void handle_install(String package_name)
 {
     io::printfn("Package name specified: '%s'", package_name);
 }
